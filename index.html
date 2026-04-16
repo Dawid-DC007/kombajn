@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kombajn Gospodarczy - Najnowsze Artykuły</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">📊</span>
+                    <h1>Kombajn Gospodarczy</h1>
+                </div>
+                <div class="header-controls">
+                    <button id="refreshBtn" class="btn btn-refresh" title="Odśwież artykuły">
+                        <span class="refresh-icon">🔄</span>
+                        Odśwież
+                    </button>
+                    <button id="themeToggle" class="btn btn-theme" title="Przełącz motyw">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Filters & Search -->
+        <div class="controls">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Szukaj artykułów..."
+                    autocomplete="off"
+                >
+            </div>
+
+            <div class="filters">
+                <select id="sourceFilter" class="filter-select">
+                    <option value="all">Wszystkie źródła</option>
+                    <option value="reuters">Reuters</option>
+                    <option value="bloomberg">Bloomberg</option>
+                    <option value="ft">Financial Times</option>
+                    <option value="wsj">Wall Street Journal</option>
+                    <option value="economist">The Economist</option>
+                </select>
+
+                <select id="sortBy" class="filter-select">
+                    <option value="newest">Najnowsze</option>
+                    <option value="oldest">Najstarsze</option>
+                    <option value="title">Alfabetycznie</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-label">Artykuły:</span>
+                <span id="articleCount" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Ostatnia aktualizacja:</span>
+                <span id="lastUpdate" class="stat-value">--:--</span>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="loading-state">
+            <div class="spinner"></div>
+            <p>Ładowanie artykułów...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="errorState" class="error-state" style="display: none;">
+            <span class="error-icon">⚠️</span>
+            <h3>Błąd ładowania</h3>
+            <p id="errorMessage"></p>
+            <button id="retryBtn" class="btn btn-primary">Spróbuj ponownie</button>
+        </div>
+
+        <!-- Articles Grid -->
+        <div id="articlesGrid" class="articles-grid"></div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="empty-state" style="display: none;">
+            <span class="empty-icon">📭</span>
+            <h3>Brak wyników</h3>
+            <p>Nie znaleziono artykułów pasujących do kryteriów wyszukiwania.</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
